@@ -1,0 +1,66 @@
+[
+    {
+        "id" : "1",
+        "title" : "Section 1",
+        "columns": 4,
+        "layout": 6,
+        "type": "menu",
+        "modules": [
+            {
+                "id" : "1",
+                "title" : "Module 1",
+                "items" : [
+                    {
+                        "id" : "1",
+                        "title": "Item 1",
+                        "content": "This is what is in item 1"
+                    },
+                    {
+                        "id" : "2",
+                        "title": "Item 2",
+                        "content": "This is what is in item 2"
+                    },
+                    {
+                        "id" : "3",
+                        "title": "Item 3",
+                        "content": "This is what is in item 3"
+                    }
+                ]
+            },
+            {
+                "id" : "2",
+                "title" : "Module 2",
+                "items" : [
+                    
+                ]
+            },
+            {
+                "id" : "3",
+                "title" : "Module 3",
+                "items" : [
+                    
+                ]
+            }
+        ]
+    },
+    {
+        "id" : "2",
+        "title" : "Section 2",
+        "columns": 4,
+        "layout": 6,
+        "type": "menu",
+        "modules": [
+            
+        ]
+    },
+    {
+        "id" : "3",
+        "title" : "Section 3",
+        "columns": 4,
+        "layout": 6,
+        "type": "menu",
+        "modules": [
+            
+        ]
+    }
+]
