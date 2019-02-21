@@ -33,16 +33,16 @@ export default class Column extends React.Component{
             <DragDropContext
                 onDragEnd = {this.onDragEnd}
             >
-                <Droppable droppableId={droppableId} type="column" direction="vertical">
-                    {(provided) => (
-                        <Container
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                        >
-                            <Title>
-                                Column: {columnIndex}
-                            </Title>
-                            <ModuleList>
+                <Container>
+                    <Title>
+                        Column: {columnIndex}
+                    </Title>
+                    <Droppable droppableId={droppableId}>
+                        {(provided) => (
+                            <ModuleList
+                                {...provided.droppableProps}
+                                ref = {provided.innerRef}
+                            >
                                 {
                                     Object.keys(modules).map((moduleKey, moduleIndex) => {
                                         return <Module 
@@ -56,9 +56,9 @@ export default class Column extends React.Component{
                                 }
                                 {provided.placeholder}
                             </ModuleList>
-                        </Container>
-                    )}
-                </Droppable>
+                        )}
+                    </Droppable>
+                </Container>
             </DragDropContext>
         )
     }

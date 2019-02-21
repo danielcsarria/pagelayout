@@ -1,0 +1,19 @@
+.container {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+#column-drag {
+    width: 50%;
+    /* padding: 10px; */
+    background-color: blue;
+}
+
+#item-drag {
+    width: 50%;
+    /* padding: 10px; */
+    background-color: red;
+}

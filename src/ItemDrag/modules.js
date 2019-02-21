@@ -42,12 +42,10 @@ export default class Module extends React.Component{
             <Draggable draggableId={moduleKey} index={moduleIndex}>
                 {(provided) => (
                     <ModuleContainer
-                    {...provided.draggableProps}
-                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        ref = {provided.innerRef}
                     >
-                        <ModuleTitle
-                            {...provided.dragHandleProps}     
-                        >
+                        <ModuleTitle {...provided.dragHandleProps} >
                             Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
                         </ModuleTitle>
 
