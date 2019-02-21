@@ -35,6 +35,15 @@ export default class Column2 extends React.Component{
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
         const droppableId = String(columnIndex);
+
+        var title = "";
+
+        if(columnIndex == 0){
+            title = "Feature";
+        } else {
+            title = columnIndex
+        }
+
         return(
             <Draggable draggableId={droppableId} index={columnIndex}>
                 {(provided) => (
@@ -43,7 +52,7 @@ export default class Column2 extends React.Component{
                         ref = {provided.innerRef}
                     >
                         <Title {...provided.dragHandleProps} >
-                            Column: {columnIndex}
+                            Column: {title}
                         </Title>
                         <Droppable droppableId={droppableId} type="module">
                             {(provided) => (
