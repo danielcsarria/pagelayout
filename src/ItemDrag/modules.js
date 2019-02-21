@@ -39,33 +39,40 @@ export default class Module extends React.Component{
          const droppableId = String(moduleIndex);
 
         return(
-            <ModuleContainer>
-                <ModuleTitle>
-                    Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
-                </ModuleTitle>
+            <Draggable draggableId={moduleKey} index={moduleIndex}>
+                {(provided) => (
+                    <ModuleContainer
+                        {...provided.draggableProps}
+                        ref = {provided.innerRef}
+                    >
+                        <ModuleTitle {...provided.dragHandleProps} >
+                            Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
+                        </ModuleTitle>
 
-                <Droppable droppableId={droppableId} type="module" direction="vertical">
-                    {(provided) => (
-                        <ItemContainer
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}
-                        >
-                            {
-                                items.map((item, itemIndex) => {
-                                    return <Item 
-                                        key={itemIndex} 
-                                        item={item} 
-                                        columnIndex={columnIndex} 
-                                        moduleIndex={moduleIndex} 
-                                        itemIndex={itemIndex}
-                                    />
-                                })
-                            }
-                            {provided.placeholder}
-                        </ItemContainer>
-                    )}
-                </Droppable>
-            </ModuleContainer>
+                        <Droppable droppableId={droppableId} type="module" direction="vertical">
+                            {(provided) => (
+                                <ItemContainer
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                >
+                                    {
+                                        items.map((item, itemIndex) => {
+                                            return <Item 
+                                                key={itemIndex} 
+                                                item={item} 
+                                                columnIndex={columnIndex} 
+                                                moduleIndex={moduleIndex} 
+                                                itemIndex={itemIndex}
+                                            />
+                                        })
+                                    }
+                                    {provided.placeholder}
+                                </ItemContainer>
+                            )}
+                        </Droppable>
+                    </ModuleContainer>
+                )}
+            </Draggable>
         )
     }
 }

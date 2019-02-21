@@ -37,19 +37,27 @@ export default class Column extends React.Component{
                     <Title>
                         Column: {columnIndex}
                     </Title>
-                    <ModuleList>
-                        {
-                            Object.keys(modules).map((moduleKey, moduleIndex) => {
-                                return <Module 
-                                    key={moduleKey} 
-                                    columnIndex={columnIndex}
-                                    moduleKey={moduleKey}
-                                    moduleIndex={moduleIndex} 
-                                    modules={modules}                                 
-                                />
-                            })
-                        }
-                    </ModuleList>
+                    <Droppable droppableId={droppableId}>
+                        {(provided) => (
+                            <ModuleList
+                                {...provided.droppableProps}
+                                ref = {provided.innerRef}
+                            >
+                                {
+                                    Object.keys(modules).map((moduleKey, moduleIndex) => {
+                                        return <Module 
+                                            key={moduleKey} 
+                                            columnIndex={columnIndex}
+                                            moduleKey={moduleKey}
+                                            moduleIndex={moduleIndex} 
+                                            modules={modules}                                 
+                                        />
+                                    })
+                                }
+                                {provided.placeholder}
+                            </ModuleList>
+                        )}
+                    </Droppable>
                 </Container>
             </DragDropContext>
         )
