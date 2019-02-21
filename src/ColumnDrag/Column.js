@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Module2 from './modules';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component';
 
 const Container = styled.div`
     margin: 8px;
@@ -45,39 +46,45 @@ export default class Column2 extends React.Component{
         }
 
         return(
-            <Draggable draggableId={droppableId} index={columnIndex}>
-                {(provided) => (
-                    <Container
-                        {...provided.draggableProps}
-                        ref = {provided.innerRef}
-                    >
-                        <Title {...provided.dragHandleProps} >
-                            Column: {title}
-                        </Title>
-                        <Droppable droppableId={droppableId} type="module">
-                            {(provided) => (
-                                <ModuleList
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                >
-                                    {
-                                        Object.keys(modules).map((moduleKey, moduleIndex) => {
-                                            return <Module2 
-                                                key={moduleKey} 
-                                                columnIndex={columnIndex}
-                                                moduleKey={moduleKey}
-                                                moduleIndex={moduleIndex} 
-                                                modules={modules}                                 
-                                            />
-                                        })
-                                    }
-                                    {provided.placeholder}
-                                </ModuleList>
-                            )}
-                        </Droppable>
-                    </Container>
-                )}
-            </Draggable>
+            <CollapsibleComponent>
+                <Draggable draggableId={droppableId} index={columnIndex}>
+                    {(provided) => (
+                        <Container
+                            {...provided.draggableProps}
+                            ref = {provided.innerRef}
+                        >
+                            <CollapsibleHead isExpanded={true}>
+                                <Title {...provided.dragHandleProps} >
+                                    Column: {title}
+                                </Title>
+                            </CollapsibleHead>
+                            <CollapsibleContent isExpanded={true}>
+                                <Droppable droppableId={droppableId} type="module">
+                                    {(provided) => (
+                                        <ModuleList
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                        >
+                                            {
+                                                Object.keys(modules).map((moduleKey, moduleIndex) => {
+                                                    return <Module2 
+                                                        key={moduleKey} 
+                                                        columnIndex={columnIndex}
+                                                        moduleKey={moduleKey}
+                                                        moduleIndex={moduleIndex} 
+                                                        modules={modules}                                 
+                                                    />
+                                                })
+                                            }
+                                            {provided.placeholder}
+                                        </ModuleList>
+                                    )}
+                                </Droppable>
+                            </CollapsibleContent>
+                        </Container>
+                    )}
+                </Draggable>
+            </CollapsibleComponent>
         )
     }
 }
