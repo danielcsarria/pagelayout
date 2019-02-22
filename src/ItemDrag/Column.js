@@ -21,17 +21,20 @@ const ModuleList = styled.div`
 
 export default class Column extends React.Component{
 
-    onDragEnd = result => {
+    onDragEnd_C = result => {
+        const { destination, source, draggableId } = result;
 
+        console.log("onDragEnd_C Right Side", destination, source, draggableId);
     }
 
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
-         const droppableId = String(columnIndex);
+        const droppableId = String(columnIndex);
+
         return(
             <DragDropContext
-                onDragEnd = {this.onDragEnd}
+                onDragEnd = {this.onDragEnd_C}
             >
                 <Container>
                     <Title>

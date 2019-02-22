@@ -33,6 +33,7 @@ export default class Module2 extends React.Component{
         const modules = this.props.modules;
  
         const module = modules[moduleKey];
+        const title = module.title;
         const type = module.type;
         const items = module.items;
 
@@ -47,7 +48,8 @@ export default class Module2 extends React.Component{
                         ref = {provided.innerRef}
                     >
                         <ModuleTitle>
-                            Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
+                            <div>{title} :: {columnIndex}, {moduleIndex} </div>
+                            <div>{moduleKey}</div>
                         </ModuleTitle>
                             <ItemContainer>
                                 {

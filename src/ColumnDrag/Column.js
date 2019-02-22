@@ -28,10 +28,6 @@ const ModuleList = styled.div`
 
 export default class Column2 extends React.Component{
 
-    onDragEnd = result => {
-
-    }
-
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
