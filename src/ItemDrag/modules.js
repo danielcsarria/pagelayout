@@ -50,7 +50,6 @@ export default class Module extends React.Component{
                         <ModuleTitle {...provided.dragHandleProps} >
                             Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
                         </ModuleTitle>
-
                         <Droppable droppableId={droppableId} type="module" direction="vertical">
                             {(provided) => (
                                 <ItemContainer

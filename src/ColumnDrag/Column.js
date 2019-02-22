@@ -4,6 +4,7 @@ import Module2 from './modules';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component';
 
+
 const Container = styled.div`
     margin: 8px;
     border: 1px solid blue;
@@ -39,7 +40,7 @@ export default class Column2 extends React.Component{
 
         var title = "";
 
-        if(columnIndex == 0){
+        if(columnIndex === 0){
             title = "Feature";
         } else {
             title = columnIndex
