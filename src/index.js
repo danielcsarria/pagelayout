@@ -86,7 +86,7 @@ class ColumnDrag extends React.Component {
             // console.log("keys", keys);
             // console.log("modules", modules);
 
-            this.setState(data.modules[source_column]);
+            // this.setState(data.modules[source_column]);
 
         } else {
             var source_keys = Object.keys(data.modules[source_column]),
@@ -94,13 +94,15 @@ class ColumnDrag extends React.Component {
 
             target_keys.splice(target_module_index, 0, source_module_id);
             data.modules[target_column] = fillOutModules(target_keys);
-            this.setState(data.modules[target_column]);
+            // this.setState(data.modules[target_column]);
 
             source_keys.splice(source_module_index, 1);
             data.modules[source_column] = fillOutModules(source_keys);
-            this.setState(data.modules[source_column]);
+            // this.setState(data.modules[source_column]);
 
         }
+
+        this.setState(data);
 
     }
 
