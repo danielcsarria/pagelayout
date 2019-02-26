@@ -8,7 +8,10 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class ItemDrag extends React.Component {
     
+    
+
     render(){
+
         return(
             
             data.modules.map((modules, columnIndex) => {
@@ -103,7 +106,7 @@ class ColumnDrag extends React.Component {
         }
 
         this.setState(data);
-
+        
     }
 
     render(){
