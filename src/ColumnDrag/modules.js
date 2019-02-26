@@ -48,7 +48,7 @@ export default class Module2 extends React.Component{
                         ref = {provided.innerRef}
                     >
                         <ModuleTitle>
-                            <div>{title} :: {columnIndex}, {moduleIndex} </div>
+                            <div>{title} ::  </div>
                             <div>{moduleKey}</div>
                         </ModuleTitle>
                             <ItemContainer>
