@@ -15,18 +15,16 @@ const Items = styled.div`
     background-color: white;
 `;
 
-// const Title = styled.h3`
-//     padding: 8px;
-// `;
-
-// const ModuleList = styled.div`
-//     padding: 8px;
-// `;
-
 export default class Item extends React.Component{
+
+
     render(){
+
+        const draggableId = this.props.item.id;
+        const index = this.props.itemIndex;
+
         return(
-            <Draggable draggableId={this.props.item.id} index={this.props.itemIndex}>
+            <Draggable draggableId={draggableId} index={index}>
                 {(provided) => (
                     <ItemContainer
                         {...provided.dragHandleProps}

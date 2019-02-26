@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Item from './Items';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component';
+import { Droppable } from 'react-beautiful-dnd';
+// import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component';
 
 
 const ModuleContainer = styled.div`

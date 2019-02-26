@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Module from './modules';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext} from 'react-beautiful-dnd';
 
 const Container = styled.div`
     margin: 8px;
@@ -23,12 +23,34 @@ export default class Column extends React.Component{
 
     onDragEnd = result => {
 
+        const { destination, source, draggableId} = result;
+
+        if(!destination){
+            return;
+        }
+
+        if(
+            destination.droppableId === source.droppableId &&
+            destination.index === source.index
+        ) {
+            return;
+        }
+
+        const moduleObject = this.props.modules;
+        const module =  Object.keys(moduleObject)[source.droppableId];
+
+        const newItemsArray = Array.from(module);
+
+        console.log(module);
+        console.log(newItemsArray);
+
+
     }
 
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
-         const droppableId = String(columnIndex);
+        // const droppableId = String(columnIndex);
         return(
             <DragDropContext
                 onDragEnd = {this.onDragEnd}
