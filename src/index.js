@@ -54,8 +54,8 @@ class ColumnDrag extends React.Component {
             target_column = parseInt(destination.droppableId, 10),
             source_module_index = source.index,
             target_module_index = destination.index,
-            source_module_id = draggableId,
-            target_module_id = Object.keys(data.modules[target_column])[target_module_index];
+            source_module_id = draggableId;
+            // target_module_id = Object.keys(data.modules[target_column])[target_module_index];
 
         const fillOutModules = function(keys) {
             // console.log("-> ", source_column, target_column);
@@ -68,10 +68,12 @@ class ColumnDrag extends React.Component {
             return modules;
         }
 
+        console.log("Modules", modules)
+
         // console.log("target_module_id", target_module_id);
         // console.log("source modules", data.modules[source_column]);
 
-        if (source_column == target_column) {
+        if (source_column === target_column) {
             var keys = Object.keys(data.modules[source_column]);
 
             if (target_module_index > source_module_index) {
@@ -109,6 +111,8 @@ class ColumnDrag extends React.Component {
         
     }
 
+    
+
     render(){
         return(
             
@@ -120,7 +124,7 @@ class ColumnDrag extends React.Component {
                             ref = {provided.innerRef}
                         >
                             {data.modules.map((modules, columnIndex) => {
-                                return <Column2 key={columnIndex} columnIndex={columnIndex} modules={modules} />
+                                return <Column2 key={columnIndex} columnIndex={columnIndex} modules={modules} data={data}/>
                             })}
                             {provided.placeholder}
                         </ColContainer>

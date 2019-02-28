@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Item from './Items';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component';
-
+import { Droppable } from 'react-beautiful-dnd';
 
 const ModuleContainer = styled.div`
     margin: 8px;
@@ -21,12 +19,6 @@ const ModuleTitle = styled.h4`
     padding: 8px;
 `;
 
-
-
-// const ModuleList = styled.div`
-//     padding: 8px;
-// `;
-
 export default class Module extends React.Component{
     render(){
         const columnIndex = this.props.columnIndex;   
@@ -41,39 +33,32 @@ export default class Module extends React.Component{
          const droppableId = String(moduleIndex);
 
         return(
-            <Draggable draggableId={moduleKey} index={moduleIndex}>
-                {(provided) => (
-                    <ModuleContainer
-                        {...provided.draggableProps}
-                        ref = {provided.innerRef}
-                    >
-                        <ModuleTitle {...provided.dragHandleProps} >
-                            Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
-                        </ModuleTitle>
-                        <Droppable droppableId={droppableId} type="module" direction="vertical">
-                            {(provided) => (
-                                <ItemContainer
-                                    ref={provided.innerRef}
-                                    {...provided.droppableProps}
-                                >
-                                    {
-                                        items.map((item, itemIndex) => {
-                                            return <Item 
-                                                key={itemIndex} 
-                                                item={item} 
-                                                columnIndex={columnIndex} 
-                                                moduleIndex={moduleIndex} 
-                                                itemIndex={itemIndex}
-                                            />
-                                        })
-                                    }
-                                    {provided.placeholder}
-                                </ItemContainer>
-                            )}
-                        </Droppable>
-                    </ModuleContainer>
-                )}
-            </Draggable>
+            <ModuleContainer>
+                <ModuleTitle>
+                    Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
+                </ModuleTitle>
+                <Droppable droppableId={droppableId} type="module" direction="vertical">
+                    {(provided) => (
+                        <ItemContainer
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}
+                        >
+                            {
+                                items.map((item, itemIndex) => {
+                                    return <Item 
+                                        key={itemIndex} 
+                                        item={item} 
+                                        columnIndex={columnIndex} 
+                                        moduleIndex={moduleIndex} 
+                                        itemIndex={itemIndex}
+                                    />
+                                })
+                            }
+                            {provided.placeholder}
+                        </ItemContainer>
+                    )}
+                </Droppable>
+            </ModuleContainer>
         )
     }
 }

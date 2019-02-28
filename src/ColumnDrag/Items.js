@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Draggable } from 'react-beautiful-dnd';
 
 const ItemContainer = styled.div`
     margin: 8px;
@@ -14,14 +13,6 @@ const Items = styled.div`
     min-height: 20px;
     background-color: white;
 `;
-
-// const Title = styled.h3`
-//     padding: 8px;
-// `;
-
-// const ModuleList = styled.div`
-//     padding: 8px;
-// `;
 
 export default class Item2 extends React.Component{
     render(){
