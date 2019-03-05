@@ -41,4 +41,4 @@ export default class Module2 extends React.Component{
             </Draggable>
         )
     }
-}
+} 
