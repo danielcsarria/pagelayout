@@ -5,6 +5,7 @@
   "dependencies": {
     "@kunukn/react-collapse": "^2.0.2",
     "components": "^0.1.0",
+    "node": "^10.15.2",
     "react": "^16.8.1",
     "react-beautiful-dnd": "^10.0.4",
     "react-collapsible": "^2.5.0",
