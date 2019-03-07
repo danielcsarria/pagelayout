@@ -6,33 +6,14 @@ import Column from './ItemDrag/Column';
 import Column2 from './ColumnDrag/Column';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-class ItemDrag extends React.Component {
-    
-    
-
-    render(){
-
-        return(
-            
-            data.modules.map((modules, columnIndex) => {
-                // console.log(modules, columnIndex);
-                return <Column key={columnIndex} columnIndex={columnIndex} modules={modules} />
-            })
-           
-        )
-    }
-
-}
-
-ReactDOM.render(<ItemDrag />, document.getElementById('item-drag'));
-
 
 const ColContainer = styled.div`
 
 `;
 
-class ColumnDrag extends React.Component {
+class LayOut extends React.Component {
 
+    
     onDragEnd_A = result => {
         const { destination, source, draggableId } = result;
 
@@ -112,29 +93,39 @@ class ColumnDrag extends React.Component {
     }
 
     
-
     render(){
+
         return(
-            
-            <DragDropContext onDragEnd={this.onDragEnd_A} >
-                <Droppable droppableId="all-columns" direction="vertical" type="column">
-                    {(provided) => (
-                        <ColContainer
-                            {...provided.droppableProps}
-                            ref = {provided.innerRef}
-                        >
-                            {data.modules.map((modules, columnIndex) => {
-                                return <Column2 key={columnIndex} columnIndex={columnIndex} modules={modules} data={data}/>
-                            })}
-                            {provided.placeholder}
-                        </ColContainer>
-                    )}
-                </Droppable>
-            </DragDropContext>
-           
+            <div class="container flex">
+                <div id="column-drag">
+                    <DragDropContext onDragEnd={this.onDragEnd_A} >
+                        <Droppable droppableId="all-columns" direction="vertical" type="column">
+                            {(provided) => (
+                                <ColContainer
+                                    {...provided.droppableProps}
+                                    ref = {provided.innerRef}
+                                >
+                                    {data.modules.map((modules, columnIndex) => {
+                                        return <Column2 key={columnIndex} columnIndex={columnIndex} modules={modules} data={data}/>
+                                    })}
+                                    {provided.placeholder}
+                                </ColContainer>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+                </div>
+                <div id="item-drag">
+                    {data.modules.map((modules, columnIndex) => {
+                        // console.log(modules, columnIndex);
+                        return <Column key={columnIndex} columnIndex={columnIndex} modules={modules} />
+                    })}
+                </div>
+            </div>
         )
+
     }
 
 }
 
-ReactDOM.render(<ColumnDrag />, document.getElementById('column-drag'));
+ReactDOM.render(<LayOut />, document.getElementById('layout'));
+
