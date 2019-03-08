@@ -92,13 +92,18 @@ class LayOut extends React.Component {
         
     }
 
+
     
     render(){
+
+        const theData = data;
 
         return(
             <div class="container flex">
                 <div id="column-drag">
-                    <DragDropContext onDragEnd={this.onDragEnd_A} >
+                    <DragDropContext 
+                        onDragEnd={this.onDragEnd_A}
+                    >
                         <Droppable droppableId="all-columns" direction="vertical" type="column">
                             {(provided) => (
                                 <ColContainer
@@ -117,7 +122,7 @@ class LayOut extends React.Component {
                 <div id="item-drag">
                     {data.modules.map((modules, columnIndex) => {
                         // console.log(modules, columnIndex);
-                        return <Column key={columnIndex} columnIndex={columnIndex} modules={modules} />
+                        return <Column key={columnIndex} columnIndex={columnIndex} modules={modules} data={theData}/>
                     })}
                 </div>
             </div>
