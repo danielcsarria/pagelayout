@@ -42,7 +42,7 @@ export default class Module extends React.Component{
                         <ModuleTitle {...provided.dragHandleProps}>
                             Module:{moduleKey} {type} ==> {columnIndex}, {moduleIndex} 
                         </ModuleTitle>
-                        <Droppable droppableId={droppableId} type="module" direction="vertical">
+                        <Droppable droppableId={droppableId} type="items" direction="vertical">
                             {(provided) => (
                                 <ItemContainer
                                     ref={provided.innerRef}

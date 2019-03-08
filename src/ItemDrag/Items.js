@@ -25,8 +25,10 @@ const Items = styled.div`
 
 export default class Item extends React.Component{
     render(){
+        const draggableId = this.props.item.id;
+        const index = this.props.itemIndex;
         return(
-            <Draggable draggableId={this.props.item.id} index={this.props.itemIndex}>
+            <Draggable key={draggableId} draggableId={draggableId} index={index}>
                 {(provided) => (
                     <ItemContainer
                         {...provided.dragHandleProps}
@@ -34,7 +36,7 @@ export default class Item extends React.Component{
                         ref = {provided.innerRef}
                     >
                         <Items>
-                            {this.props.item.headline} ==> {this.props.columnIndex}, {this.props.moduleIndex}, {this.props.itemIndex} 
+                            {/* {this.props.item.headline */} ==> {this.props.columnIndex}, {this.props.moduleIndex}, {index} 
                         </Items>
                     </ItemContainer>
                 )}

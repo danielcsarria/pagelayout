@@ -22,43 +22,15 @@ const ModuleList = styled.div`
 export default class Column extends React.Component{
 
     onDragEnd_C = result => {
-
-        const data = this.props.data;
-
         const { destination, source, draggableId } = result;
-        if (!destination) {
-            return;            
-        }
 
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            // console.log("Nothing moved")
-            return;
-        }
-
-        // console.log("onDragEnd_A Left Side", source, destination, draggableId);
-
-        var source_module = parseInt(source.droppableId, 10),
-            target_module = parseInt(destination.droppableId, 10),
-            source_item_index = source.index,
-            target_item_index = destination.index,
-            source_item_id = draggableId;
-
-        console.log("Source Module" , source_module);
-        console.log("Target Module" , target_module);
-        console.log("Source Item Index" , source_item_index);
-        console.log("Source Item Id" , draggableId);
-
-        this.setState(data);
+        console.log("onDragEnd_C Right Side", destination, source, draggableId);
     }
 
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
-        const droppableId = String(columnIndex);
-
+        
         return(
             <DragDropContext
                 onDragEnd = {this.onDragEnd_C}
@@ -67,27 +39,27 @@ export default class Column extends React.Component{
                     <Title>
                         Column: {columnIndex}
                     </Title>
-                        <Droppable droppableId={droppableId}>
-                            {(provided) => (
-                                <ModuleList
-                                    {...provided.droppableProps}
-                                    ref = {provided.innerRef}
-                                >
-                                    {
-                                        Object.keys(modules).map((moduleKey, moduleIndex) => {
-                                            return <Module 
-                                                key={moduleKey} 
-                                                columnIndex={columnIndex}
-                                                moduleKey={moduleKey}
-                                                moduleIndex={moduleIndex} 
-                                                modules={modules}                                 
-                                            />
-                                        })
-                                    }
-                                    {provided.placeholder}
-                                </ModuleList>
-                            )}
-                        </Droppable>
+                    <Droppable droppableId="all-modules" type="modules" direction="verticle">
+                        {(provided) => (
+                            <ModuleList
+                                {...provided.droppableProps}
+                                ref = {provided.innerRef}
+                            >
+                                {
+                                    Object.keys(modules).map((moduleKey, moduleIndex) => {
+                                        return <Module 
+                                            key={moduleKey} 
+                                            columnIndex={columnIndex}
+                                            moduleKey={moduleKey}
+                                            moduleIndex={moduleIndex} 
+                                            modules={modules}                                 
+                                        />
+                                    })
+                                }
+                                {provided.placeholder}
+                            </ModuleList>
+                        )}
+                    </Droppable>
                 </Container>
             </DragDropContext>
         )
