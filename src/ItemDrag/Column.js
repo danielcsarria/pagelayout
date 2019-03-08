@@ -30,7 +30,9 @@ export default class Column extends React.Component{
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
-        
+
+        const droppableId = String(columnIndex);
+
         return(
             <DragDropContext
                 onDragEnd = {this.onDragEnd_C}
@@ -39,7 +41,7 @@ export default class Column extends React.Component{
                     <Title>
                         Column: {columnIndex}
                     </Title>
-                    <Droppable droppableId="all-modules" type="modules" direction="verticle">
+                    <Droppable droppableId="all-modules" type="module">
                         {(provided) => (
                             <ModuleList
                                 {...provided.droppableProps}
