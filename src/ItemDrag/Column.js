@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Module from './modules';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
     margin: 8px;
@@ -57,6 +57,7 @@ export default class Column extends React.Component{
     render(){
         const modules = this.props.modules
         const columnIndex = this.props.columnIndex;
+        const droppableId = String(columnIndex);
 
         return(
             <DragDropContext
@@ -66,19 +67,27 @@ export default class Column extends React.Component{
                     <Title>
                         Column: {columnIndex}
                     </Title>
-                        <ModuleList>
-                            {
-                                Object.keys(modules).map((moduleKey, moduleIndex) => {
-                                    return <Module 
-                                        key={moduleKey} 
-                                        columnIndex={columnIndex}
-                                        moduleKey={moduleKey}
-                                        moduleIndex={moduleIndex} 
-                                        modules={modules}                                 
-                                    />
-                                })
-                            }
-                        </ModuleList>
+                        <Droppable droppableId={droppableId}>
+                            {(provided) => (
+                                <ModuleList
+                                    {...provided.droppableProps}
+                                    ref = {provided.innerRef}
+                                >
+                                    {
+                                        Object.keys(modules).map((moduleKey, moduleIndex) => {
+                                            return <Module 
+                                                key={moduleKey} 
+                                                columnIndex={columnIndex}
+                                                moduleKey={moduleKey}
+                                                moduleIndex={moduleIndex} 
+                                                modules={modules}                                 
+                                            />
+                                        })
+                                    }
+                                    {provided.placeholder}
+                                </ModuleList>
+                            )}
+                        </Droppable>
                 </Container>
             </DragDropContext>
         )
